@@ -6,11 +6,16 @@ inputs:
     description: Blob of files to lint
     required: false
     default: '.'
+  maxWarnings:
+    description: Number of warnings to trigger nonzero exit code
+    required: false
+    default: '-1'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.files }}
+    - ${{ inputs.maxWarnings }}
 branding: 
   icon: circle
   color: purple

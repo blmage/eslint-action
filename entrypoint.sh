@@ -22,8 +22,14 @@ fi
 if [ -z "$1" ]; then
     glob="."
 else 
-    glob="$@"
+    glob="$1"
+fi
+
+if [ -z "$2" ]; then
+    max_warnings="-1"
+else 
+    max_warnings="$2"
 fi
 
 echo "## Running ESLint"
-sh -c "$setup ./node_modules/.bin/eslint $glob"
+sh -c "$setup ./node_modules/.bin/eslint $glob --max-warnings=$max_warnings"
